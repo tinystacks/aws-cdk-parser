@@ -1,0 +1,59 @@
+{
+  "name": "@tinystacks/aws-cdk-parser",
+  "version": "1.0.1-local.8",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "cleanup": "rm -rf dist || true && rm *.tgz || true",
+    "clean-build": "npm ci && npm run cleanup && npm run build",
+    "dependency-check": "./node_modules/.bin/depcheck",
+    "install-local-iac-utils": "npm i -D @tinystacks/iac-utils@local --@tinystacks:registry=http://local-npm-registry:4873",
+    "install-remote-iac-utils": "npm i -D @tinystacks/iac-utils@latest --@tinystacks:registry=https://registry.npmjs.org",
+    "lint": "./node_modules/.bin/eslint ./src",
+    "lint-fix": "./node_modules/.bin/eslint --fix ./src",
+    "lint-tests": "./node_modules/.bin/eslint --config .eslintrc.test.json ./test",
+    "lint-fix-tests": "./node_modules/.bin/eslint --config .eslintrc.test.json --fix ./test",
+    "major": "npm version major --no-git-tag-version",
+    "minor": "npm version minor --no-git-tag-version",
+    "patch": "npm version patch --no-git-tag-version",
+    "prepack": "npm run clean-build",
+    "prerelease": "npm version prerelease --preid=local --no-git-tag-version",
+    "publish-local": "npm run prerelease; npm publish --tag local --@tinystacks:registry=http://local-npm-registry:4873",
+    "qa": "npm run lint && npm run test-cov",
+    "test": "jest",
+    "test-cov": "jest --coverage",
+    "test-file": "jest ./test/cli/commands/smoke-test/parser/terraform/tinystacks-module-parser/index.test.ts",
+    "test-file-cov": "jest ./test/cli/commands/smoke-test/smoke-tests/aws/resource-tests/vpc-smoke-tests.test.ts --coverage",
+    "view-test-cov": "jest --coverage && open coverage/lcov-report/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinystacks/aws-cdk-parser.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tinystacks/aws-cdk-parser/issues"
+  },
+  "homepage": "https://github.com/tinystacks/aws-cdk-parser#readme",
+  "devDependencies": {
+    "@tinystacks/iac-utils": "^0.0.14-local.8",
+    "@types/jest": "^28.1.7",
+    "@types/node": "^18.11.15",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "depcheck": "^1.4.3",
+    "eslint": "^8.22.0",
+    "eslint-import-resolver-typescript": "^3.4.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "jest": "^28.1.3",
+    "ts-jest": "^28.0.8",
+    "typescript": "^4.7.4"
+  }
+}
