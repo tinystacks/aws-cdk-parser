@@ -1,7 +1,10 @@
 import { parseEip } from '../src/ec2';
-import { CloudformationTypes } from '@tinystacks/iac-utils';
-import { CDK_DIFF_CREATE_SYMBOL } from '@tinystacks/iac-utils';
-import { CdkDiff, Json } from '@tinystacks/iac-utils';
+import {
+  CloudformationTypes,
+  CDK_DIFF_CREATE_SYMBOL,
+  CdkDiff,
+  Json
+} from '@tinystacks/iac-utils';
 
 describe('EC2 Resource Parser', () => {
   it('parseEip', () => {

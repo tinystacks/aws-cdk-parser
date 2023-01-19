@@ -1,7 +1,10 @@
 import { parseS3Bucket } from '../src/s3';
-import { CloudformationTypes } from '@tinystacks/iac-utils';
-import { CDK_DIFF_CREATE_SYMBOL } from '@tinystacks/iac-utils';
-import { CdkDiff, Json } from '@tinystacks/iac-utils';
+import {
+  CloudformationTypes,
+  CDK_DIFF_CREATE_SYMBOL,
+  CdkDiff,
+  Json
+} from '@tinystacks/iac-utils';
 
 describe('S3 Resource Parser', () => {
   it('parseS3Bucket', () => {

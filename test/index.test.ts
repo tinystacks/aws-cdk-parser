@@ -27,9 +27,12 @@ jest.mock('../src/vpc', () => ({
 }));
 
 import { TinyStacksAwsCdkParser } from '../src';
-import { CloudformationTypes } from '@tinystacks/iac-utils';
-import { CDK_DIFF_CREATE_SYMBOL } from '@tinystacks/iac-utils';
-import { CdkDiff, Json } from '@tinystacks/iac-utils';
+import {
+  CloudformationTypes,
+  CDK_DIFF_CREATE_SYMBOL,
+  CdkDiff,
+  Json
+} from '@tinystacks/iac-utils';
 
 describe('tinystacks-aws-cdk-parser', () => {
   const mockCloudformationTemplate: Json = {};

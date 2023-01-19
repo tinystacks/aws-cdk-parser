@@ -6,9 +6,12 @@ import {
   parseSubnet,
   parseVpc
 } from '../src/vpc';
-import { CloudformationTypes } from '@tinystacks/iac-utils';
-import { CDK_DIFF_CREATE_SYMBOL } from '@tinystacks/iac-utils';
-import { CdkDiff, Json } from '@tinystacks/iac-utils';
+import {
+  CloudformationTypes,
+  CDK_DIFF_CREATE_SYMBOL,
+  CdkDiff,
+  Json
+} from '@tinystacks/iac-utils';
 
 describe('VPC Resource Parser', () => {
   it('parseVpc', () => {
