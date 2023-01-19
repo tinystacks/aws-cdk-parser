@@ -235,7 +235,7 @@ describe('VPC Resource Parser', () => {
       changeTypeSymbol: CDK_DIFF_CREATE_SYMBOL,
       resourceType: CloudformationTypes.CFN_ROUTE_TABLE
     };
-    const mockCloudformationTemplate: Json = require('./test-data/vpc-stack/cdk/with-nat/template.json');
+    const mockCloudformationTemplate: Json = require('./test-data/template.json');
   
     const parsedRouteTable = parseRouteTable(mockDiff, mockCloudformationTemplate);
   
