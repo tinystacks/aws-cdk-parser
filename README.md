@@ -1,4 +1,4 @@
-# aws-cdk-parser
+# @tinystacks/aws-cdk-parser
 An AWS CDK parser for a few key resources.  Intended as a plugin for @tinystacks/iac-utils smoke test cli.
 
 ## How To Use
