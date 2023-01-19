@@ -1,5 +1,6 @@
-import { CdkDiff, Json } from '@tinystacks/iac-utils';
 import {
+  CdkDiff,
+  Json,
   CloudformationTypes
 } from '@tinystacks/iac-utils';
 
