@@ -1,5 +1,5 @@
 # @tinystacks/aws-cdk-parser
-An AWS CDK parser for a few key resources.  Intended as a plugin for @tinystacks/iac-utils smoke test cli.
+An AWS CDK parser for a few key resources.  Intended as a plugin for @tinystacks/predeploy-infra smoke test cli.
 
 ## How To Use
 By default, this parser plugin is included as a peer dependency of the [smoke-test-cli]() and is therefore always available, though it is deprioritized over any explicitly configured parsers.

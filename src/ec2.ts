@@ -1,4 +1,4 @@
-import { CdkDiff, Json } from '@tinystacks/iac-utils';
+import { CdkDiff, Json } from '@tinystacks/predeploy-infra';
 
 // https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Address.html
 function parseEip (diff: CdkDiff, cloudformationTemplate: Json): Json {

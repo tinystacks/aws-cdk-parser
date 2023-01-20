@@ -2,7 +2,7 @@ import {
   CdkDiff,
   Json,
   CloudformationTypes
-} from '@tinystacks/iac-utils';
+} from '@tinystacks/predeploy-infra';
 
 const {
   CFN_ROUTE_TABLE_ASSOCIATION,

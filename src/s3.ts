@@ -1,4 +1,4 @@
-import { CdkDiff, Json } from '@tinystacks/iac-utils';
+import { CdkDiff, Json } from '@tinystacks/predeploy-infra';
 
 // https://docs.aws.amazon.com/AmazonS3/latest/API/API_Bucket.html
 function parseS3Bucket (diff: CdkDiff, cloudformationTemplate: Json): Json {

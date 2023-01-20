@@ -4,7 +4,7 @@ import {
   CDK_DIFF_CREATE_SYMBOL,
   CdkDiff,
   Json
-} from '@tinystacks/iac-utils';
+} from '@tinystacks/predeploy-infra';
 
 describe('S3 Resource Parser', () => {
   it('parseS3Bucket', () => {

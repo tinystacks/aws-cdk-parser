@@ -11,7 +11,7 @@ import {
   CDK_DIFF_CREATE_SYMBOL,
   CdkDiff,
   Json
-} from '@tinystacks/iac-utils';
+} from '@tinystacks/predeploy-infra';
 
 describe('VPC Resource Parser', () => {
   it('parseVpc', () => {
