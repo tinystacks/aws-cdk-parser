@@ -5,8 +5,10 @@ function parseS3Bucket (diff: CdkDiff, cloudformationTemplate: Json): Json {
   const { logicalId } = diff;
   const [ _logicalId, cfnEntry = {} ] = Object.entries<Json>(cloudformationTemplate.Resources).find(([key]) => key === logicalId) || [];
   const name = cfnEntry.Properties?.BucketName;
+  const tagSet = cfnEntry.Properties?.Tags;
   return {
-    Name: name
+    Name: name,
+    TagSet: tagSet
   };
 }
 
