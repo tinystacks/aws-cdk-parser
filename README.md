@@ -1,5 +1,5 @@
 # @tinystacks/aws-cdk-parser
-An AWS CDK parser for a few key resources.  Intended as a plugin for @tinystacks/precloud.
+An AWS CDK parser for a few key resources.  Intended as a plugin for [@tinystacks/precloud](https://www.npmjs.com/package/@tinystacks/precloud).
 
 ## How To Use
 By default, this parser plugin is included as a peer dependency of the [precloud cli](https://github.com/tinystacks/precloud) and is therefore always available, though it is deprioritized over any explicitly configured parsers.
