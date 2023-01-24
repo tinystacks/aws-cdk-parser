@@ -53,6 +53,6 @@ describe('EC2 Resource Parser', () => {
 
     const parsedEip = parseEip(mockDiff, mockCloudformationTemplate);
 
-    expect(parsedEip).toStrictEqual({});
+    expect(parsedEip).toStrictEqual(undefined);
   });
 });

@@ -1,10 +1,11 @@
 import { CdkDiff, Json } from '@tinystacks/precloud';
-import { getResourceFromDiff } from './utils';
+import { dontReturnEmpty, getResourceFromDiff } from './utils';
 
 // https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Address.html
 function parseEip (diff: CdkDiff, cloudformationTemplate: Json): Json {
+  
   const cfnEntry = getResourceFromDiff(diff, cloudformationTemplate);
-  if (!cfnEntry) { return {}; }
+  if (!cfnEntry) { return undefined; }
 
   const domain = cfnEntry.Properties?.Domain;
   const instanceId = cfnEntry.Properties?.InstanceId;
@@ -12,13 +13,15 @@ function parseEip (diff: CdkDiff, cloudformationTemplate: Json): Json {
   const publicIpv4Pool = cfnEntry.Properties?.PublicIpv4Pool;
   const tagSet = cfnEntry.Properties?.Tags;
 
-  return {
+  const properties = {
     domain,
     instanceId,
     networkBorderGroup,
     publicIpv4Pool,
     tagSet
   };
+
+  return dontReturnEmpty(properties);
 }
 
 export {

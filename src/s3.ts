@@ -1,19 +1,21 @@
 import { CdkDiff, Json } from '@tinystacks/precloud';
-import { getResourceFromDiff } from './utils';
+import { dontReturnEmpty, getResourceFromDiff } from './utils';
 
 // https://docs.aws.amazon.com/AmazonS3/latest/API/API_Bucket.html
 // https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html#AmazonS3-GetBucketTagging-response-TagSet
 function parseS3Bucket (diff: CdkDiff, cloudformationTemplate: Json): Json {
   const cfnEntry = getResourceFromDiff(diff, cloudformationTemplate);
 
-  if (!cfnEntry) { return {}; }
+  if (!cfnEntry) { return undefined; }
 
   const name = cfnEntry.Properties?.BucketName;
   const tagSet = cfnEntry.Properties?.Tags;
-  return {
+  const properties = {
     Name: name,
     TagSet: tagSet
   };
+  
+  return dontReturnEmpty(properties);
 }
 
 export {

@@ -48,6 +48,6 @@ describe('S3 Resource Parser', () => {
 
     const parsedBucket = parseS3Bucket(mockDiff, mockCloudformationTemplate);
 
-    expect(parsedBucket).toStrictEqual({});
+    expect(parsedBucket).toStrictEqual(undefined);
   });
 });
