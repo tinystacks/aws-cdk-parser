@@ -3,7 +3,6 @@ import {
   Json,
   CloudformationTypes
 } from '@tinystacks/precloud';
-import { dontReturnEmpty } from './utils';
 
 const {
   CFN_ROUTE_TABLE_ASSOCIATION,
@@ -18,13 +17,11 @@ function parseVpc (diff: CdkDiff, cloudformationTemplate: Json): Json {
   const instanceTenancy = cfnEntry.Properties?.InstanceTenancy;
   const tagSet = cfnEntry.Properties?.Tags;
 
-  const properties = {
+  return {
     cidrBlock,
     instanceTenancy,
     tagSet
   };
-
-  return dontReturnEmpty(properties);
 }
 
 // https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NatGateway.html
@@ -35,13 +32,11 @@ function parseNatGateway (diff: CdkDiff, cloudformationTemplate: Json): Json {
   const subnetId = cfnEntry.Properties?.SubnetId;
   const tagSet = cfnEntry.Properties?.Tags;
 
-  const properties = {
+  return {
     connectivityType,
     subnetId,
     tagSet
   };
-
-  return dontReturnEmpty(properties);
 }
 
 // https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Subnet.html
@@ -66,7 +61,7 @@ function parseSubnet (diff: CdkDiff, cloudformationTemplate: Json): Json {
   const vpcId = cfnEntry.Properties?.VpcId;
   const tagSet = cfnEntry.Properties?.Tags;
 
-  const properties = {
+  return {
     assignIpv6AddressOnCreation,
     availabilityZone,
     availabilityZoneId,
@@ -79,8 +74,6 @@ function parseSubnet (diff: CdkDiff, cloudformationTemplate: Json): Json {
     vpcId,
     tagSet
   };
-
-  return dontReturnEmpty(properties);
 }
 
 // https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteTableAssociation.html
@@ -91,12 +84,10 @@ function parseRouteTableAssociation (diff: CdkDiff, cloudformationTemplate: Json
   const routeTableId = cfnEntry.Properties?.RouteTableId;
   const subnetId = cfnEntry.Properties?.SubnetId;
 
-  const properties = {
+  return {
     routeTableId,
     subnetId
   };
-
-  return dontReturnEmpty(properties);
 }
 
 // https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Route.html
@@ -117,7 +108,7 @@ function parseRoute (diff: CdkDiff, cloudformationTemplate: Json): Json {
   const vpcEndpointId =  cfnEntry.Properties?.VpcEndpointId;
   const vpcPeeringConnectionId =  cfnEntry.Properties?.VpcPeeringConnectionId;
 
-  const properties = {
+  return {
     carrierGatewayId,
     destinationCidrBlock,
     destinationIpv6CidrBlock,
@@ -131,8 +122,6 @@ function parseRoute (diff: CdkDiff, cloudformationTemplate: Json): Json {
     vpcEndpointId,
     vpcPeeringConnectionId
   };
-
-  return dontReturnEmpty(properties);
 }
 
 // https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteTable.html
@@ -149,12 +138,10 @@ function parseRouteTable (diff: CdkDiff, cloudformationTemplate: Json): Json {
       const routeTableId = value.Properties?.RouteTableId;
       const subnetId = value.Properties?.SubnetId;
 
-      const properties = {
+      return {
         routeTableId,
         subnetId
       };
-
-      return dontReturnEmpty(properties);
     });
 
   const routeSet = resourceEntries.filter(([_key, value]: [string, Json]) => 
@@ -175,7 +162,7 @@ function parseRouteTable (diff: CdkDiff, cloudformationTemplate: Json): Json {
       const vpcEndpointId = value.Properties?.VpcEndpointId;
       const vpcPeeringConnectionId = value.Properties?.VpcPeeringConnectionId;
 
-      const properties = {
+      return {
         carrierGatewayId,
         destinationCidrBlock,
         destinationIpv6CidrBlock,
@@ -189,21 +176,17 @@ function parseRouteTable (diff: CdkDiff, cloudformationTemplate: Json): Json {
         vpcEndpointId,
         vpcPeeringConnectionId
       };
-
-      return dontReturnEmpty(properties);
     });
     
   const tagSet = cfnEntry.Properties?.Tags;
   const vpcId = cfnEntry.Properties?.VpcId;
 
-  const properties = {
+  return {
     associationSet,
     routeSet,
     tagSet,
     vpcId
   };
-
-  return dontReturnEmpty(properties);
 }
 
 export {
