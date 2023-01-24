@@ -30,4 +30,8 @@ jobs:
               echo "missing file .version-change-type!"
               exit 1
           fi
+          echo "Checking for release notes..."
+          git fetch origin main ${{ github.event.pull_request.base.sha }};
+          diff=$(git diff -U0 ${{ github.event.pull_request.base.sha }} ${{ github.sha }} RELEASENOTES.md);
+          if [ -z "$diff" ]; then echo "Missing release notes! exiting..."; exit 1; fi
 
