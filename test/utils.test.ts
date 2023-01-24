@@ -52,52 +52,52 @@ describe('Diff Resource Parser', () => {
     const parsedResource = getResourceFromDiff(mockDiff, mockCloudformationTemplate);
     expect(parsedResource).toStrictEqual(mockCloudformationTemplate.Resources.VpcPublicSubnetSubnet1EIP4F45FFE5);
   });
+});
 
-  describe('dontReturnEmpty', () => {
-    it('returns properties if any are defined', () => {
-      const input: any = {
-        a: 1,
-        b: undefined,
-        c: null,
-        d: {},
-        e: []
-      };
+describe('dontReturnEmpty', () => {
+  it('returns properties if any are defined', () => {
+    const input: any = {
+      a: 1,
+      b: undefined,
+      c: null,
+      d: {},
+      e: []
+    };
 
-      const output = dontReturnEmpty(input);
+    const output = dontReturnEmpty(input);
 
-      expect(output).toEqual(input);
-    });
-    it('returns undefined if all are empty', () => {
-      const input: any = {
-        a: undefined,
-        b: undefined,
-        c: null,
-        d: {},
-        e: []
-      };
+    expect(output).toEqual(input);
+  });
+  it('returns undefined if all are empty', () => {
+    const input: any = {
+      a: undefined,
+      b: undefined,
+      c: null,
+      d: {},
+      e: []
+    };
 
-      const output = dontReturnEmpty(input);
+    const output = dontReturnEmpty(input);
 
-      expect(output).toEqual(undefined);
-    });
-    it('works on nested objects', () => {
-      const input: any = {
-        a: undefined,
-        b: undefined,
-        c: null,
-        d: {},
-        e: [],
-        f: {
-          g: [],
-          h: {},
-          i: [{}]
-        },
-        j: [{ k: [] }, []]
-      };
+    expect(output).toEqual(undefined);
+  });
+  it('works on nested objects', () => {
+    const input: any = {
+      a: undefined,
+      b: undefined,
+      c: null,
+      d: {},
+      e: [],
+      f: {
+        g: [],
+        h: {},
+        i: [{}]
+      },
+      j: [{ k: [] }, []]
+    };
 
-      const output = dontReturnEmpty(input);
+    const output = dontReturnEmpty(input);
 
-      expect(output).toEqual(undefined);
-    });
+    expect(output).toEqual(undefined);
   });
 });
