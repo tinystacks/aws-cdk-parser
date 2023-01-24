@@ -32,7 +32,7 @@ import {
   CDK_DIFF_CREATE_SYMBOL,
   CdkDiff,
   Json
-} from '@tinystacks/predeploy-infra';
+} from '@tinystacks/precloud';
 
 describe('tinystacks-aws-cdk-parser', () => {
   const mockCloudformationTemplate: Json = {};

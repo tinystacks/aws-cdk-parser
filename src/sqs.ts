@@ -1,4 +1,4 @@
-import { CdkDiff, Json } from '@tinystacks/predeploy-infra';
+import { CdkDiff, Json } from '@tinystacks/precloud';
 
 // https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_CreateQueue.html
 function parseSqsQueue (diff: CdkDiff, cloudformationTemplate: Json): Json {

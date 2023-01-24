@@ -3,7 +3,7 @@ import {
   CloudformationTypes,
   CdkDiff,
   Json
-} from '@tinystacks/predeploy-infra';
+} from '@tinystacks/precloud';
 import { parseEip } from './ec2';
 import { parseS3Bucket } from './s3';
 import { parseSqsQueue } from './sqs';

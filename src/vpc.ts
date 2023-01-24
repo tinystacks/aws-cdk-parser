@@ -2,7 +2,7 @@ import {
   CdkDiff,
   Json,
   CloudformationTypes
-} from '@tinystacks/predeploy-infra';
+} from '@tinystacks/precloud';
 
 const {
   CFN_ROUTE_TABLE_ASSOCIATION,
