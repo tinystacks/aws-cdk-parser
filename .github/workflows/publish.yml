@@ -1,3 +1,5 @@
+
+
 name: Publish Flow
 on:
   push:
@@ -16,11 +18,12 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
-          registry-url: 'https://npm.pkg.github.com'
-          token: ${{ secrets.TS_GH_BOT }}
-      - run: npm ci
+          registry-url: 'https://registry.npmjs.org'
+          token: ${{ secrets.NPM_DEPLOY_KEY }}
+      - run: |
+          npm ci;
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.TS_GH_BOT }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_DEPLOY_KEY }}
       - name: Submit PR for version change
         run: |
           git config --global user.email "zaydsimjee@gmail.com"
@@ -29,22 +32,32 @@ jobs:
           versionChange=$(npm version $changeType --no-git-tag-version)
           echo "version updated to" $versionChange
           git checkout -b "$versionChange"
+          previousChangeLog=$(cat CHANGELOG.md)
+          echo "$versionChange" > CHANGELOG.md
+          echo "---" >> CHANGELOG.md
+          echo "$(cat RELEASENOTES.md)" >> CHANGELOG.md
+          echo " " >> CHANGELOG.md
+          echo "$previousChangeLog" >> CHANGELOG.md
+          echo "" > RELEASENOTES.md
+          git add CHANGELOG.md
+          git add RELEASENOTES.md
           git add package*.json
           git commit -m "version $versionChange [skip ci]"
           git push --set-upstream origin "$versionChange"
+          git push origin --tags
           gh pr create --title "$versionChange" --body "update version to $versionChange"
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_DEPLOY_KEY }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Approve version change PR and merge
         run: |
-          git config --global user.email "safeer@safeer.me"
-          git config --global user.name "Safeer Mohiuddin"
+          git config --global user.email "caleb.courier@gmail.com"
+          git config --global user.name "Caleb Courier"
           gh pr review "$versionChange" --approve
           gh pr merge "$versionChange" --admin --squash
           sleep 2s
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_DEPLOY_KEY }}
           GH_TOKEN: ${{ secrets.SAFEER_APPROVER_BOT }}
       - name: Checkout main and publish module
         run: |
@@ -54,5 +67,5 @@ jobs:
           git pull
           npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.TS_GH_BOT }}
-          GH_TOKEN: ${{ secrets.TS_GH_BOT }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_DEPLOY_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
