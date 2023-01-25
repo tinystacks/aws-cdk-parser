@@ -27,7 +27,7 @@ jobs:
           git config --global user.email "zaydsimjee@gmail.com"
           git config --global user.name "Zayd Simjee"
           changeType=$(<.version-change-type)
-          versionChange=$(npm version $changeType)
+          versionChange=$(npm version $changeType --no-git-tag-version)
           echo "version updated to" $versionChange
           previousChangeLog=$(cat CHANGELOG.md)
           echo "$versionChange" > CHANGELOG.md
@@ -42,7 +42,6 @@ jobs:
           git add package*.json
           git commit -m "version $versionChange [skip ci]"
           git push --set-upstream origin "$versionChange"
-          git push origin --tags
           gh pr create --title "$versionChange" --body "update version to $versionChange"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_DEPLOY_KEY }}
