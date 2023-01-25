@@ -1,2 +1,3 @@
-Initial release
-Update @tinystacks/precloud dev dependency version
+* Initial release
+* Update @tinystacks/precloud dev dependency version
+* Fix publish flow
