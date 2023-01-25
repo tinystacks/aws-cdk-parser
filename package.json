@@ -1,6 +1,6 @@
 {
   "name": "@tinystacks/aws-cdk-parser",
-  "version": "0.0.3-local.0",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/index.js",
   "files": [
