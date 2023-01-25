@@ -1,6 +1,6 @@
 {
   "name": "@tinystacks/aws-cdk-parser",
-  "version": "0.0.2",
+  "version": "0.0.3-local.0",
   "description": "",
   "main": "dist/index.js",
   "files": [
@@ -42,7 +42,7 @@
   },
   "homepage": "https://github.com/tinystacks/aws-cdk-parser#readme",
   "devDependencies": {
-    "@tinystacks/precloud": "^1.0.2",
+    "@tinystacks/precloud": "^1.0.3",
     "@types/jest": "^28.1.7",
     "@types/node": "^18.11.15",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
